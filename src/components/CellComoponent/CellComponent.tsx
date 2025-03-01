@@ -6,11 +6,15 @@ import Image from "next/image";
 interface CellProps {
     cell: Cell;
     selected: boolean;
+    click: (cell: Cell) => void;
 }
 
-const CellComponent: FC<CellProps> = ({cell, selected}) => {
+const CellComponent: FC<CellProps> = ({cell, selected, click}) => {
     return (
-        <div className={`${styles.cell} ${styles[cell.color]} ${styles[String(selected)]}`}>
+        <div 
+            className={`${styles.cell} ${styles[cell.color]} ${styles[String(selected)]}`}
+            onClick={() => click(cell)}    
+        >
             {cell.figure?.logo && 
                 <Image src={cell.figure.logo} alt="figure"/>
             }
