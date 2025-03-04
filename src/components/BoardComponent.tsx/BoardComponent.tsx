@@ -1,6 +1,6 @@
 import { Board } from "@/models/Board";
 import styles from "./boardComponent.module.css";
-import { Fragment, FC, useState } from "react";
+import { Fragment, FC, useState, useEffect } from "react";
 import CellComponent from "../CellComoponent/CellComponent";
 import { Cell } from "@/models/Cell";
 
@@ -19,8 +19,12 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard}) => {
         }
     }
 
+    useEffect(() => {
+        highlightCells()
+    }, [selectedCell])
+
     function highlightCells() {
-        board.highlightCells();
+        board.highlightCells(selectedCell);
         updateBoard();
     }
 
