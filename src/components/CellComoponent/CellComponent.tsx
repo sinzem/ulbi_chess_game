@@ -20,7 +20,7 @@ const CellComponent: FC<CellProps> = ({cell, selected, click}) => {
                 <div className={styles.available}></div>
             }
             {cell.figure?.logo && 
-                <Image src={cell.figure.logo} alt="figure"/>
+                <Image src={cell.figure.logo} className={styles[cell.figure.name]} alt="figure"/>
             }
         </div>
     );
